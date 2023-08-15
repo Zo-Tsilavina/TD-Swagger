@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: Student API
+  version: 1.0.0
+servers:
+  - url: http://STD22083.com
+paths:
+  /students:
+    get:
+      summary: Get student information
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                id: STD22083
+                name: Zo Tsilavina
+                age: 18
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
+    post:
+      summary: Add Student
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Zo Tsilavina
+                age:
+                  type: integer
+                  example: 18
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                message: Student added successfully
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
