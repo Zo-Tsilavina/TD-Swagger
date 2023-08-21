@@ -1,4 +1,6 @@
-# Student API Documentation
+# Student AND teachers API Documentation
+
+Voici le lien du Swagger.io: **https://petstore.swagger.io/?url=https://raw.githubusercontent.com/Zo-Tsilavina/TD-Swagger/main/TD.yaml**
 
 Cette documentation décrit l'API des étudiants, qui permet de gérer les informations des étudiants.
 
