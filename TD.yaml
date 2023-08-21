@@ -155,3 +155,132 @@ components:
           type: integer
         name:
           type: string
+/teachers:
+    get:
+      summary: Get teacher information
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                - first_name: Toky
+                  last_name: Ramarozaka
+                  courses:
+                    - Prog1
+                    - Web1
+                  
+                - first_name: Harry
+                  last_name: Rakotondratombo
+                  courses:
+                    - Sys1
+                  
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
+
+    post:
+      summary: Add Teacher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: Tokimahery
+                last_name:
+                  type: string
+                  example: Ramarozaka
+                courses:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                    - Prog2
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                message: Teacher added successfully
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
+
+  /teachers/{teacherId}:
+    put:
+      summary: Update Teacher
+      parameters:
+        - name: teacherId
+          in: path
+          description: Teacher id to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: Harry
+                last_name:
+                  type: string
+                  example: Harry
+                courses:
+                  type: array
+                  items:
+                    type: string
+                  example:
+                    - Sys2
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                message: Teacher updated successfully
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
+
+    delete:
+      summary: Delete Teacher
+      parameters:
+        - name: teacherId
+          in: path
+          description: Teacher id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                message: Teacher deleted successfully
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
+
+  /pets/{petId}:
