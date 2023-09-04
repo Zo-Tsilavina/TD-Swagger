@@ -51,6 +51,102 @@ paths:
             application/json:
               example:
                 message: An error occurred
+    /students/{studentId}:
+    put:
+      summary: Update student
+      parameters:
+        - name: studentId
+          in: path
+          description: Student id to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Zo Tsilavina
+                age:
+                  type: int
+                  example: 18
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                message: Student updated successfully
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
+
+    delete:
+      summary: Delete Student
+      parameters:
+        - name: studentId
+          in: path
+          description: Student id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response, OK
+          content:
+            application/json:
+              example:
+                message: Student deleted successfully
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              example:
+                message: An error occurred
+
+  /pets/{petId}:
+    put:
+      tags:
+        - pet
+      summary: Update an existing pet
+      description: Update an existing pet by Id
+      operationId: updatePet
+      parameters:
+        - name: petId
+          in: path
+          description: Pet id to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existing pet in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+      security: []  # Remove the petstore_auth security requirement for this operation
 
   /teachers:
     get:
